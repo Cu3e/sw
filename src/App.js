@@ -21,8 +21,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         {this.state.data && this.state.data.children
-          ? this.state.data.children.map(element => (
-              <img className="image" src={element.data.thumbnail} />
+
+          ? this.state.data.children.map((element, index) => (
+              <img className="image" src={element.data.thumbnail} key={index}/>
             ))
           : null}
       </div>
