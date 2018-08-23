@@ -23,7 +23,7 @@ class App extends Component {
         {this.state.data && this.state.data.children
 
           ? this.state.data.children.map((element, index) => (
-              <img className="image" src={element.data.thumbnail} key={index}/>
+              <img className="image" src={element.data.thumbnail} key={index} alt="" />
             ))
           : null}
       </div>
