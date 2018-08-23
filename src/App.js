@@ -4,7 +4,7 @@ import './App.css'
 
 class App extends Component {
   state = {
-    data: {}
+    data: null
   }
 
   componentDidMount() {
@@ -22,6 +22,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {this.state.data && this.state.data.children
+          ? this.state.data.children.map(element => (
+              <img className="image" src={element.data.thumbnail} />
+            ))
+          : null}
       </div>
     )
   }
