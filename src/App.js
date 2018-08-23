@@ -12,18 +12,16 @@ class App extends Component {
       .then(json => this.setState({ data: json.data }))
   }
   render() {
+    const { data } = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        {this.state.data && this.state.data.children
-
-          ? this.state.data.children.map((element, index) => (
-              <img className="image" src={element.data.thumbnail} key={index} alt="" />
+      <div>
+        {data && data.children
+          ? data.children.map((el, i) => (
+            <div className="teaser-wrapper" key={i}>
+              <img className="image" src={el.data.thumbnail} alt="" />
+              <h2>Example title</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius nisi turpis, luctus ultricies tellus interdum sit amet. Nam maximus malesuada rutrum. Nam at justo viverra, lobortis erat vel, posuere urna. Cras sit amet sem nec elit congue faucibus et at urna. Sed suscipit dolor at eros maximus, eget convallis sapien imperdiet. Aenean venenatis sodales enim ac pulvinar. Suspendisse ut lectus purus. Integer sed elementum ex. Pellentesque et egestas arcu.</p>
+            </div>
             ))
           : null}
       </div>

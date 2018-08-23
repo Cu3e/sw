@@ -5,5 +5,11 @@ body {
 }
 
 .image {
-  margin: 5px;
+  float: left;
+  margin: 0 15px 0 5px;
+}
+
+
+.teaser-wrapper {
+  border-bottom: 1px solid #eee;
 }
