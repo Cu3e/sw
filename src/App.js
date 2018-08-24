@@ -1,5 +1,15 @@
-import React, { Component } from 'react'
+import React, {Component, Fragment} from 'react'
+import { Link } from 'react-router-dom'
+import Home from './Home'
+import Post from './Post'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
 import './index.css'
+
+
 
 class App extends Component {
   state = {
@@ -11,23 +21,24 @@ class App extends Component {
       .then(res => res.json())
       .then(json => this.setState({ data: json.data }))
   }
-  render() {
+
+  render(){
     const { data } = this.state
+
     return (
-      <div className="teasers-wrapper">
-        {data && data.children
-          ? data.children.map((el, i) => {
-            const {title, thumbnail} = el.data
-            return (
-            <div className="teaser-wrapper" key={i}>
-              <img className="image" src={thumbnail} alt="" />
-              <h2>{title}</h2>
-            </div>
-            )}
-          ) : <h3>Loading data...</h3>}
-      </div>
+      <Router>
+        <Router>
+          <Fragment>
+            <ul><li><Link to="/">Home</Link></li></ul>
+            <Route exact path="/" component={p => <Home data={data} {...p}/>}/>
+            <Route path="/:id" component={p => <Post data={data} {...p} />}/>
+          </Fragment>
+        </Router>
+      </Router>
     )
   }
 }
 
 export default App
+
+

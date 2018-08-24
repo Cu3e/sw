@@ -9,14 +9,17 @@ body {
 }
 
 .teasers-wrapper {
-  padding: 0 20px;
   overflow: hidden;
 }
 
 .teaser-wrapper {
+  color: #333;
+  margin: 10px 0;
+  display: block;
   overflow: hidden;
-  border: 1px solid transparent;
+  text-decoration: none;
   border-bottom-color: #eee;
+  border: 1px solid transparent;
   transition: background-color 150ms;
 }
 .teaser-wrapper:hover {
@@ -24,4 +27,9 @@ body {
 }
 .teaser-wrapper h2 {
   margin: 0;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
 }

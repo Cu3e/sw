@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { unregister as unregisterServiceWorker } from './registerServiceWorker'
 import App from './App';
+import {BrowserRouter} from 'react-router-dom'
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').then(function(registration) {
@@ -13,6 +14,7 @@ if ('serviceWorker' in navigator) {
 
 
 
+
 // const defferedPrompt;
 // window.addEventListener('beforeinstallprompt', function(event){
   //   console.log('beforeinstallprompt fired')
@@ -21,5 +23,11 @@ if ('serviceWorker' in navigator) {
   //   return false
   // })
   
-  ReactDOM.render(<App />, document.getElementById('root'));
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
+
   unregisterServiceWorker();
