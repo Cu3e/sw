@@ -6,10 +6,22 @@ body {
 
 .image {
   float: left;
-  margin: 0 15px 0 5px;
 }
 
+.teasers-wrapper {
+  padding: 0 20px;
+  overflow: hidden;
+}
 
 .teaser-wrapper {
-  border-bottom: 1px solid #eee;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-bottom-color: #eee;
+  transition: background-color 150ms;
+}
+.teaser-wrapper:hover {
+  background-color: #eee;
+}
+.teaser-wrapper h2 {
+  margin: 0;
 }

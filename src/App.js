@@ -14,16 +14,17 @@ class App extends Component {
   render() {
     const { data } = this.state
     return (
-      <div>
+      <div className="teasers-wrapper">
         {data && data.children
-          ? data.children.map((el, i) => (
+          ? data.children.map((el, i) => {
+            const {title, thumbnail} = el.data
+            return (
             <div className="teaser-wrapper" key={i}>
-              <img className="image" src={el.data.thumbnail} alt="" />
-              <h2>Example title</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius nisi turpis, luctus ultricies tellus interdum sit amet. Nam maximus malesuada rutrum. Nam at justo viverra, lobortis erat vel, posuere urna. Cras sit amet sem nec elit congue faucibus et at urna. Sed suscipit dolor at eros maximus, eget convallis sapien imperdiet. Aenean venenatis sodales enim ac pulvinar. Suspendisse ut lectus purus. Integer sed elementum ex. Pellentesque et egestas arcu.</p>
+              <img className="image" src={thumbnail} alt="" />
+              <h2>{title}</h2>
             </div>
-            ))
-          : null}
+            )}
+          ) : <h3>Loading data...</h3>}
       </div>
     )
   }
