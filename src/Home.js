@@ -10,7 +10,7 @@ class App extends Component {
 
     return (
       <div className="teasers-wrapper">
-        {data && data.children ? data.children.map((el, i) => {
+        {data ? data.map((el, i) => {
             const {title, thumbnail, id} = el.data
 
             return (

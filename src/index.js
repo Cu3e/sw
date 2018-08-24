@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { unregister as unregisterServiceWorker } from './registerServiceWorker'
 import App from './App';
 import {BrowserRouter} from 'react-router-dom'
 
@@ -29,5 +28,3 @@ if ('serviceWorker' in navigator) {
     </BrowserRouter>,
     document.getElementById('root')
   );
-
-  unregisterServiceWorker();
