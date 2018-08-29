@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-
+// const url = 'https://service-worker-wp.firebaseio.com/posts.json'
 
 
 // const defferedPrompt;

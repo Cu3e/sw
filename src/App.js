@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import './index.css'
 
-
+import { readAllData } from './utility'
 
 class App extends Component {
   state = {
@@ -15,15 +15,26 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if ('indexedDB' in window) {
+      console.log('@@ App - indexedDB')
+
+      readAllData('idb-feed')
+        .then(data => {
+          return this.setState({data})
+        }
+      )
+    }
+
+    console.log('@@ App - fetch')
     fetch('https://www.reddit.com/r/earthporn.json')
       .then(res => res.json())
       .then(json => this.setState({ data: json.data.children }))
+    
+
   }
 
   render(){
     const { data } = this.state
-
-    console.log('@@ ENV', process.env.NODE_ENV)
 
     return (
       <Router>
@@ -37,5 +48,3 @@ class App extends Component {
 }
 
 export default App
-
-
