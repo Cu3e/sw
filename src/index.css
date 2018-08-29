@@ -10,14 +10,10 @@ body, h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 
-.teasers-wrapper {
-  overflow: hidden;
-}
-
 .teaser-wrapper {
   color: #333;
-  margin: 10px 0;
-  display: block;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   text-decoration: none;
   border-bottom-color: #eee;
@@ -27,19 +23,25 @@ body, h1, h2, h3, h4, h5, h6 {
 .teaser-wrapper:hover {
   background-color: #eee;
 }
-.teaser-wrapper h2 {
-  margin: 0;
+
+.teaser-title {
+  margin-left: 10px;
+  font-size: 18px;
 }
 
 .post-image {
   width: 100%;
   height: auto;
+  margin: 20px;
+ 
 }
 
-ul {
-  padding: 0;
+.post-header {
+  display: flex;
+  align-items: center; 
+  margin: 20px 0;
 }
 
-li {
-  list-style: none;
+.post-title {
+  margin-left: 20px;
 }

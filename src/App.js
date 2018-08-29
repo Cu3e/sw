@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react'
+import 'bulma/css/bulma.min.css'
 import Home from './Home'
 import Post from './Post'
+import Navbar from './components/Navbar'
 import {
   BrowserRouter as Router,
   Route
@@ -41,6 +43,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <Navbar />
           <Route exact path="/" component={p => <Home data={data} {...p}/>}/>
           <Route path="/:id" component={p => <Post data={data} {...p} />}/>
         </Fragment>
