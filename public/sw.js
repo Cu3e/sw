@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-globals, no-undef */
 
 importScripts('./idb.js')
 importScripts('./utility.js')
@@ -87,14 +87,16 @@ self.addEventListener('fetch', function (event) {
   } else {
     event.respondWith(
       caches.match(event.request)
-        .then(function (response) {
+        .then( response => {
           if (response) {
             return response;
           } else {
             return fetch(event.request)
-              .then(function (res) {
+              .then( res => {
+                // if (url !== res) 
+                console.log('@@ res', res)
                 return caches.open(CACHE_DYNAMIC)
-                  .then(function (cache) {
+                  .then( cache => {
                     // trimCache(CACHE_DYNAMIC, 3);
                     cache.put(event.request.url, res.clone());
                     return res;
@@ -102,8 +104,10 @@ self.addEventListener('fetch', function (event) {
               })
               .catch(function (err) {
                 return caches.open(CACHE_STATIC)
-                  .then(function (cache) {
-                    if (event.request.headers.get('accept').includes('text/html')) {
+                  .then( cache => {
+                    if (event.request.headers
+                        .get('accept')
+                        .includes('text/html')) {
                       return cache.match('/offline.html');
                     }
                   });

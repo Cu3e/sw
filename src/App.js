@@ -17,21 +17,23 @@ class App extends Component {
   componentDidMount() {
     if ('indexedDB' in window) {
       console.log('@@ App - indexedDB')
-
       readAllData('idb-feed')
-        .then(data => {
-          return this.setState({data})
-        }
-      )
+      .then(data => {
+        if (!data || !data.length) return this.getData()
+        return this.setState({data})
+      }
+    )
+  } else {
+      console.log('@@ App - Fetch')
+      this.getData()
     }
+  }
 
-    console.log('@@ App - fetch')
+  getData = () => 
     fetch('https://www.reddit.com/r/earthporn.json')
       .then(res => res.json())
       .then(json => this.setState({ data: json.data.children }))
-    
 
-  }
 
   render(){
     const { data } = this.state
